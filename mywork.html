@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Work</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body id="indexbody">
+    <div class="header">
+        <div class="sub-header">
+            <h4 id="name">
+                Janvisree
+            </h4>
+        </div>
+        <div class="container">
+            <nav class="navbar">
+                <div class="nav-toggle" id="navToggle">
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="mywork.html" class="active">Portfolio</a></li>
+                    <li>
+                        <a href="assets/Janvisree_Puligundla.pdf" target="_blank" class="home-btn">
+                            Resume
+                        </a>
+                    </li>
+                    
+                    <li><a href="javascript:void(0);" onclick="openModal(); closeDropdown(); setActiveLink(this);" class="contact-btn">Get in touch</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+    
+
+    <div id="mywork">
+        <div class="container">
+            <h1 class="sub-title">My Projects</h1>
+            <div class="work-list">
+                <div class="work">
+                    <img src="assets/ckd.webp" alt="project1">
+                    <div class="layer">
+                        <h3>Heart Disease Identification from Patients’ Social Posts, Machine Learning Solution on Spark</h3>    
+                        <!-- <p>sdbahfduadif</p> -->
+                        <a href="https://github.com/janvi1112"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                    </div>
+                </div>
+                <div class="work">
+                    <img src="assets/ckd.webp" alt="project2">
+                    <div class="layer">
+                        <h3>Data-Driven Meteorology: Unveiling Insights from Weather Data</h3>    
+                        <!-- <p>sdbahfduadif</p> -->
+                        <a href="https://github.com/janvi1112"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                    </div>
+                </div>
+                <div class="work">
+                    <img src="assets/ckd.webp" alt="project3">
+                    <div class="layer">
+                        <h3>Sport Retail Data Insights</h3>    
+                        <!-- <p>sdbahfduadif</p> -->
+                        <a href="https://github.com/janvi1112"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                    </div>
+                </div>
+                <div class="work">
+                    <img src="assets/ckd.webp" alt="project4">
+                    <div class="layer">
+                        <h3>Coffee Contains more Caffeine than an Energy Drink</h3>    
+                        <!-- <p>sdbahfduadif</p> -->
+                        <a href="https://github.com/janvi1112"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                    </div>
+                </div>
+                <div class="work">
+                    <img src="assets/ckd.webp" alt="project5">
+                    <div class="layer">
+                        <h3>Applying Dimensionality Reduction in Collaborative Filtering
+                            Recommender Systems</h3>    
+                        <!-- <p>sdbahfduadif</p> -->
+                        <a href="https://github.com/janvi1112"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div>
+        <div class="container" id = 'homecontact'>
+            <h1>Get in touch</h1>
+            <p>Feel free to connect with me and ask questions or collaborate!</p>
+        </div>
+        <div id = 'homecontacticons'>
+            <a href="mailto: janvisree.p@gmail.com" target="_blank">
+                <img src="assets/mail.png" alt="Icon 1">
+            </a>
+            <a href="https://www.linkedin.com/in/janvisree-puligundla-80a0861b9/" target="_blank">
+                <img src="assets/linkedin.webp" alt="Icon 2">
+            </a>
+            <a href="https://github.com/janvi1112" target="_blank">
+                <img src="assets/github.png" alt="Icon 3">
+            </a>
+        </div>
+    </div>
+
+
+    <div id="contactModal" class="modal" onclick="closeModal(); removeActiveLink();">
+        <div class="modal-content" onclick="event.stopPropagation();">
+            <span class="close" onclick="closeModal(); removeActiveLink();">&times;</span>
+            <h2>Connect with me</h2>
+            <form action="mailto:janvisree.p@gmail.com" method="post" enctype="text/plain">
+                <label for="message">Your Message:</label>
+                <textarea id="message" name="message" rows="4" cols="50" required></textarea>
+                <input type="submit" value="Send">
+            </form>
+            <div id = 'homecontacticons'>
+                <a href="mailto: janvisree.p@gmail.com" target="_blank">
+                    <img src="assets/mail.png" alt="Icon 1">
+                </a>
+                <a href="https://www.linkedin.com/in/janvisree-puligundla-80a0861b9/" target="_blank">
+                    <img src="assets/linkedin.webp" alt="Icon 2">
+                </a>
+                <a href="https://github.com/janvi1112" target="_blank">
+                    <img src="assets/github.png" alt="Icon 3">
+                </a>
+            </div>
+        </div>
+    </div>     
+</div>           
+    <script src="script.js"></script>
+    <script>
+        var tablinks = document.getElementsByClassName("tab-links")
+        var tabcontents = document.getElementsByClassName("tab-contents")
+
+        function opentab(tabname){
+            for (tablink of tablinks){
+                tablink.classList.remove("active-link")
+            }
+            for (tabcontent of tabcontents){
+                tabcontent.classList.remove("active-tab")
+            }
+            event.currentTarget.classList.add("active-link")
+            document.getElementById(tabname).classList.add("active-tab")
+        }
+    </script>
+</body>
+</html>
