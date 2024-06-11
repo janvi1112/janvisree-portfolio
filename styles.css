@@ -546,7 +546,7 @@ table{
     font-size: 20px;
 }
 .home1text h1{
-    font-size: 50px;
+    font-size: 40px;
     margin-top: 20px;
 }
 .home1text h5{
@@ -559,7 +559,7 @@ table{
 .home1text h1 span{
     display: inline-block;
             margin: 0;
-            font-size: 70px;
+            font-size: 50px;
              background-color: #2f8d46;
             background-image: url(
 'assets/111');
