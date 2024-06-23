@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sport Retail Data Insights</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body id="indexbody">
+    <div class="header">
+        <div class="sub-header">
+            <h4 id="name">
+                Janvisree
+            </h4>
+        </div>
+        <div class="container">
+            <nav class="navbar">
+                <div class="nav-toggle" id="navToggle">
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="mywork.html" class="active">Portfolio</a></li>
+                    <li>
+                        <a href="assets/Janvisree_Puligundla.pdf" target="_blank" class="home-btn">
+                            Resume
+                        </a>
+                    </li>
+                    <li><a href="javascript:void(0);" onclick="openModal(); closeDropdown(); setActiveLink(this);" class="contact-btn">Get in touch</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+    
+    <section class="clustering-section">
+        <div class="container">
+            <div id="imageModal" class="modal" onclick="closeImageModal();">
+                <div class="modal-content" onclick="event.stopPropagation();">
+                    <span class="close" onclick="closeImageModal();">&times;</span>
+                    <img id="expandedImage" src="" alt="Expanded Image">
+                </div>
+            </div>
+        <h1 style="text-align: center; margin-bottom: 25px;" class="sub-title">Sport Retail Data Insights</h1>
+        <img src="assets/project4/project4.webp" alt="Methodology" class="clustering-overview-images">
+        <a href="https://assets.zyrosite.com/dOqX1Rko21iyeZB8/sport-products-sales-analysis-A0x4JQBJENIJj1XN.xlsx" target="_blank" class="btn">
+            Dataset Link
+        </a>
+        
+        <h1>1. Introduction:</h1>
+        <p>
+            The sports retail sector, situated at the intersection of dynamic market shifts, changing
+            consumer preferences, and an expanding product landscape, faces the imperative of thriving
+            in an environment marked by intense competition and evolving trends. Our research
+            initiative responds to this imperative, aiming to unveil intricate patterns and predictive
+            insights from the Sports Products Sales analysis dataset [1] to comprehensively understand
+            the factors driving success in sports retail. Our project unfolds through stages, starting with
+            initial data cleaning and exploratory data analysis (EDA), followed by advanced
+            methodologies like association rule mining, time series analysis with ARIMA, and regression
+            modeling. Each stage contributes to our overarching goal of deriving actionable insights from
+            the dataset.
+            Recognizing the transformative potential of machine learning and advanced analytics in
+            reshaping operational strategies, our research is driven by the goal of providing sports
+            retailers with a deeper market understanding. In the digital age, characterized by
+            unprecedented opportunities, our project aims to enable effective navigation of challenges
+            and capitalization on emerging trends.
+            Our primary research focus is on understanding the intricate interactions influencing
+            sporting goods sales. Utilizing Apriori association analysis, we identify co-occurrence
+            patterns between products, providing insights into complementary relationships guiding
+            consumer purchasing decisions. This knowledge proves instrumental in inventory control
+            and serves as a strategic guide for product packaging and advertising campaigns.
+            Addressing temporal dynamics in the sports retail industry, ARIMA models facilitate trend
+            identification in sales. Retailers can enhance supply chain management and mitigate risks by
+            leveraging temporal insights to predict and respond to market fluctuations. Analyzing
+            complex relationships among sales-related variables, we employ various regression models,
+            including lasso, decision trees, ridge, and linear regression, for operating profit estimation.
+            Subsequent sections will delve into the methodologies applied, showcase key findings, and
+            culminate in a comparative analysis of predictive models. This includes Linear, Ridge, Lasso,
+            and the Decision Tree model which stands out as a particularly accurate and promising
+            methodology, achieving the best score (R^2) of 0.997. These exceptionally low error metrics
+            highlight the model's effectiveness in capturing the underlying patterns in the data,
+            showcasing its potential as a robust solution for the given task.
+        </p>
+        <h1>2. Dataset:</h1>
+        <p>
+            The Sports Products Sales Analysis dataset employed in this project is sourced from the FP20
+Analytics Challenge [1]. This dataset serves as a rich resource for delving into the
+complexities of the sports retail sector. It provides comprehensive insights across multiple
+dimensions, including details about retailers, sales specifics, geographical variables, and
+product characteristics.
+        </p>
+        <h1>3. Methodology</h2>
+        <p>Our approach encompasses a multifaceted methodology tailored to extract comprehensive insights from the sports retail dataset. The following sections delineate the sequential stages of our methodology:</p>
+        
+        <h3>3.1 Data Preprocessing:</h3>
+        <ol>
+          <li>The column names were renamed for consistency and clarity.</li>
+          <li>Verified the datatypes for each variable.</li>
+          <li>Checked null values and noticed that there are no null values in the datasets. This indicates the completeness of the dataset.</li>
+          <li>Various categorical columns were explored to understand the distribution of data within each category.</li>
+          <li>Handled data errors in 'total_sales' and 'operating_profit' through systematic recalculation.</li>
+          <li>The dataset was sorted chronologically based on the 'invoice_date' column for a coherent temporal sequence.</li>
+        </ol>
+        
+        <h3>3.2 Feature Engineering:</h3>
+        <p>To enhance the predictive capabilities, the following feature engineering techniques were applied:</p>
+        <ol>
+          <li>Normalization: Operating profit values were normalized using MinMaxScaler, a technique that scales numerical data to a range of 0 to 1, ensuring uniformity and facilitating effective analysis, particularly in scenarios where varying scales might impact model performance.</li>
+          <li>Date-Related Feature Extraction: Extracted additional features such as month, day, and day of the week from the 'invoice_date' column. These features can help capture variations in sales based on temporal trends.</li>
+        </ol>
+        
+        <h3>3.3 Exploratory Data Analysis:</h3>
+        <p>The Exploratory Data Analysis (EDA) process involved a comprehensive examination of the dataset to extract meaningful insights and patterns. Initial steps included renaming columns for consistency and checking data types to ensure accurate representation. Subsequent analyses investigated potential data errors and distribution patterns across various categorical variables such as retailer, region, state, city, product type, and sales method. Descriptive statistics, like value counts and summary statistics, were employed to gain a deeper understanding of the dataset's characteristics. The analysis revealed a diverse distribution of retailers, regions, states, cities, product types, and sales methods. For instance, 'Foot Locker' emerged as the most frequent retailer, 'West' as the dominant region, and 'Men's Street Footwear' as the predominant product type. Temporal patterns were explored through sorting the dataset by the 'invoice_date,' providing a chronological view of sales data. The examination of 'operating_profit,' column uncovered a wide range of values, leading to the normalization of operating profit using MinMaxScaler. Overall, the EDA process not only facilitated a better understanding of the dataset's structure and distributions but also laid the groundwork for subsequent modeling and analysis, ensuring a robust and informed approach to extracting insights from the sports retail dataset.</p>
+        
+        <h3>3.4 Association Rule Mining – Apriori</h3>
+        <p>The Apriori algorithm is a classic method used for mining frequent itemsets and generating association rules in transactional data. Following is the explanation of the Apriori methodology applied:</p>
+        <ol>
+          <li><strong> One-Hot Encoding:</strong> The categorical variable 'product_type' is one-hot encoded, converting it into binary format. This is a crucial step as Apriori requires binary data. Each unique category in the categorical variable is represented as a binary vector. For each category, a new binary column is created. The binary column corresponding to the category takes the value 1 if the original data point belongs to that category, and 0 otherwise.</li>
+          <li><strong> Creating Transaction Data:</strong> The data is then transformed into transactional format suitable for Apriori. Rows represent unique transactions identified by 'retailer' and 'invoice_date', and columns indicate whether a specific product type was present in the transaction.</li>
+          <li><strong>Apriori Algorithm:</strong> The Apriori algorithm was employed to identify frequent itemsets within the dataset. The algorithm was fine-tuned by adjusting the minimum support threshold to capture meaningful associations. Initially, the algorithm was applied with a minimum support threshold of 0.5, yielding no frequent itemsets and then the threshold was adjusted to 0.4, leading to the identification of frequent one-item sets. Subsequently, the threshold was adjusted to 0.3, leading to the identification of frequent one-item sets and two-item sets.</li>
+          <li><strong> Association Rules:</strong> Association rules were derived from the frequent itemsets using the Apriori algorithm with a minimum confidence threshold set at 0.7. These rules provide valuable insights into significant associations between different product types, contributing to a deeper understanding of transaction patterns.</li>
+          <li><strong>Model Evaluation Support:</strong> It computes how frequently an item or an itemset appears in the dataset.</li>
+          <li><strong>Confidence:</strong> It measures the likelihood that itemset B will be bought by a customer who has bought itemset A. If the confidence value is high, then there will be a strong association between itemsets A and B. The Apriori algorithm underwent tuning by adjusting the minimum support threshold from 0.5 to 0.3. Subsequently, association rules were generated, employing a minimum confidence level of 0.7.</li>
+        </ol>
+        
+        <h3>3.5 Time Series Analysis – ARIMA</h3>
+        <p>Autoregressive Integrated Moving Average (ARIMA) model is aimed to forecast operating profit over time.</p>
+        <ol>
+          <li><strong>Stationarity Checks</strong>
+            <ol>
+              <li><strong>Augmented Dickey-Fuller (ADF) Test:</strong> The ADF test serves as a statistical measure to ascertain whether a time series exhibits stationarity or non-stationarity.</li>
+              <li><strong>Kwiatkowski-Phillips-Schmidt-Shin (KPSS) Test:</strong> In contrast, the KPSS test functions as another diagnostic tool to gauge the stationarity of a time series.</li>
+            </ol>
+          </li>
+          <li><strong>Differencing and Lag order Selection:</strong> Differencing was performed to achieve stationarity, and autocorrelation functions (ACF) and partial autocorrelation functions (PACF) were used to determine the lag orders (p, d, q) for the ARIMA model.</li>
+          <li><strong>Model Selection and Training:</strong> The ARIMA model with the best (p, d, q) parameters was selected based on minimizing the Akaike Information Criterion (AIC). The model was trained on the dataset using a rolling window approach for out-of-sample forecasting with a window size of 100.</li>
+        </ol>
+        
+        <h1>5. Results:</h1>
+        <h3>5.1 Exploratory Data Analysis</h3>
+
+        <h4>5.1.1 Total Sales and operating profit by Retailer:</h4>
+        <p>Below bar plots display the total sales and operating profit for each retailer. West Gear has the highest total sales and operating profit.</p>
+        <div class="cleaning-image-container">
+            <div class="thumbnail" onclick="expandImage('assets/project4/sri1.png')">
+                <img src="assets/project4/sri1.png" alt="hsilcs">
+            </div>
+        </div>
+        <div class="cleaning-image-container">
+            <div class="thumbnail" onclick="expandImage('assets/project4/sri2.png')">
+                <img src="assets/project4/sri2.png" alt="hsilcs">
+            </div>
+        </div>
+
+        <h4>5.1.2 Normalized Operating Profit over time:</h4>
+        <p>Below time series plot depicts the operating profit over time which is useful before performing statistical tests to identify the stationarity of the time series.</p>
+        <div class="cleaning-image-container">
+            <div class="thumbnail" onclick="expandImage('assets/project4/sri3.png')">
+                <img src="assets/project4/sri3.png" alt="hsilcs">
+            </div>
+        </div>
+        <h4>5.1.3 Distribution of product types:</h4>
+        <p>Below Pie chart displays distribution of product types. All the product types are almost equally distributed.</p>
+        <div class="cleaning-image-container">
+            <div class="thumbnail" onclick="expandImage('assets/project4/sri4.png')">
+                <img src="assets/project4/sri4.png" alt="hsilcs">
+            </div>
+        </div>
+        <h3>5.2 Association Rule Mining – Apriori</h3>
+
+        <h4>5.2.1 Frequents Itemsets – Minimum Support = 0.3</h4>
+        <p>Below table represents the frequent items set with a minimum support of 0.3</p>
+        <div class="cleaning-image-container">
+            <div class="thumbnail" onclick="expandImage('assets/project4/sri5.png')">
+                <img src="assets/project4/sri5.png" alt="hsilcs">
+            </div>
+        </div>
+        <h4>5.2.2 Association Rules – Minimum Confidence = 0.7</h4>
+        <p>Below table represents the Association rules with a minimum confidence of 0.7 </p>
+        <div class="cleaning-image-container">
+            <div class="thumbnail" onclick="expandImage('assets/project4/sri6.png')">
+                <img src="assets/project4/sri6.png" alt="hsilcs">
+            </div>
+        </div>
+        <p>Below Scatter plot depicts association rules support and confidence colored by lift value.</p>
+        <div class="cleaning-image-container">
+            <div class="thumbnail" onclick="expandImage('assets/project4/sri7.png')">
+                <img src="assets/project4/sri7.png" alt="hsilcs">
+            </div>
+        </div>
+        <h3>5.3 Time Series Analysis – ARIMA</h3>
+
+        <h4>5.3.1 ADF and KPSS tests before differencing:</h4>
+        <p>Below are the ADF and KPSS test results before differencing. ADF test concluded that the data is stationary and KPSS concluded that the data is non-stationary.</p>
+        <div class="cleaning-image-container">
+            <div class="thumbnail" onclick="expandImage('assets/project4/sri8.png')">
+                <img src="assets/project4/sri8.png" alt="hsilcs">
+            </div>
+        </div>
+        <h4>5.3.2 Differenced Normalized Operating Profit:</h4>
+        <p>Differenced the Normalized Operating Profit to make it stationary (d =1). Below is the time series plot of differenced normalized operating profit.</p>
+        <div class="cleaning-image-container">
+            <div class="thumbnail" onclick="expandImage('assets/project4/sri9.png')">
+                <img src="assets/project4/sri9.png" alt="hsilcs">
+            </div>
+        </div>
+        <h4>5.3.3 ADF and KPSS tests after differencing:</h4>
+        <p>Below are the ADF and KPSS test results after differencing. Both ADF and KPSS tests concluded that the data is stationary.</p>
+        <div class="cleaning-image-container">
+            <div class="thumbnail" onclick="expandImage('assets/project4/sri10.png')">
+                <img src="assets/project4/sri10.png" alt="hsilcs">
+            </div>
+        </div>
+        <h4>5.3.4 ACF and PACF graphs:</h4>
+        <p>From below Autocorrelation plot, there are 6 lags beyond significant region (95% confidence interval). Therefore, q can be tuned from 0 to 6. </p>
+        <div class="cleaning-image-container">
+            <div class="thumbnail" onclick="expandImage('assets/project4/sri11.png')">
+                <img src="assets/project4/sri11.png" alt="hsilcs">
+            </div>
+        </div>
+        <p>From below Partial Autocorrelation plot, there are 6 lags beyond significant region (95% confidence interval). Therefore, p can be tuned from 0 to 6.</p>
+        <div class="cleaning-image-container">
+            <div class="thumbnail" onclick="expandImage('assets/project4/sri12.png')">
+                <img src="assets/project4/sri12.png" alt="hsilcs">
+            </div>
+        </div>
+        <h4>5.3.5 Model evaluation and Hyperparameter tuning:</h4>
+        <p>Below output tells the best lag order (p,d,q) along with the least AIC score. </p>
+        <div class="cleaning-image-container">
+            <div class="thumbnail" onclick="expandImage('assets/project4/sri13.png')">
+                <img src="assets/project4/sri13.png" alt="hsilcs">
+            </div>
+        </div>
+        <p>Below output displays the MSE and MAE of the best ARIMA model.</p>
+        <div class="cleaning-image-container">
+            <div class="thumbnail" onclick="expandImage('assets/project4/sri14.png')">
+                <img src="assets/project4/sri14.png" alt="hsilcs">
+            </div>
+        </div>
+        <h4>5.3.5 ARIMA model Predictions with Rolling Window:</h4>
+        <p>Below time series plot displays the ARIMA model predictions with a rolling window of 100.</p>
+        <div class="cleaning-image-container">
+            <div class="thumbnail" onclick="expandImage('assets/project4/sri15.png')">
+                <img src="assets/project4/sri15.png" alt="hsilcs">
+            </div>
+        </div>
+        <h3>5.4 Regression:</h3>
+
+        <h4>5.4.1 Hyperparameter Tuning and Model evaluation:</h4>
+        <p>Below table displays the best score (R^2), best params, best mse and best mae for the regression models.</p>
+        <div class="cleaning-image-container">
+            <div class="thumbnail" onclick="expandImage('assets/project4/sri16.png')">
+                <img src="assets/project4/sri16.png" alt="hsilcs">
+            </div>
+        </div>
+        <h4>5.4.2 Models vs Best Score</h4>
+        <p>Below bar plot compares the best score (R^2) for the regression models. Decision Tree is the best model with the highest R^2 value of 0.9973.</p>
+        <div class="cleaning-image-container">
+            <div class="thumbnail" onclick="expandImage('assets/project4/sri17.png')">
+                <img src="assets/project4/sri17.png" alt="hsilcs">
+            </div>
+        </div>
+        <h1>Conclusion:</h1>
+        <p>
+            In this comprehensive analysis, we delved into the intricate landscape of predicting
+            operating profit in the dynamic realm of business and finance. Employing a multifaceted
+            approach, we explored the realms of Association Rule Mining, Time Series Analysis using
+            ARIMA, and various Regression techniques. The findings and insights drawn from each
+            methodology contribute to a holistic understanding of the factors influencing operating
+            profit.
+            The application of the Apriori algorithm revealed intriguing patterns and associations among
+            product categories. We identified key associations, such as the correlation between Men's
+            Street Footwear and Men's Athletic Footwear, providing valuable insights for inventory
+            management and marketing strategies.
+            By employing ARIMA models, we successfully captured the temporal dynamics of
+            normalized operating profit. The optimal ARIMA configuration, (2, 1, 5), showcased the
+            algorithm's ability to discern patterns and make accurate predictions. The results shed light
+            on the temporal trends that businesses can leverage for strategic decision-making.
+            The regression analysis, featuring Ridge Regression, Lasso Regression, Linear Regression, and
+            Decision Tree Regression, underscored the significance of diverse modeling approaches.
+            Each algorithm offered unique advantages, and their hyperparameters were meticulously
+            tuned to achieve optimal predictive performance. The decision tree model exhibited
+            exceptional performance, achieving a R^2 score of 0.997306, closely followed by Ridge
+            Regression and Linear Regression. These results validate the efficacy of our models in
+            predicting operating profit with high precision.
+            The insights derived from this study carry implications for businesses aiming to optimize
+            their operational profitability. The identified associations and predictive models can inform
+            strategic decisions related to inventory management, marketing campaigns, and overall
+            financial planning.
+            As we conclude this project, it is essential to acknowledge that the field of predictive
+            analytics is dynamic, and continuous refinement and adaptation are crucial. Future work
+            could explore ensemble methods, deep learning architectures such as Recurrent Neural
+            Networks (RNNs) and Long Short-Term Memory Networks (LSTMs), can potentially capture
+            more intricate temporal dependencies within the operating profit data.        </p>
+
+        </div>
+    </section>
+    
+
+         
+    <div>
+        <div class="container" id = 'homecontact'>
+            <h1>Get in touch </h1>
+            <p>Have a project or question? I’d love to hear from you!</p>
+        </div>
+        <div id = 'homecontacticons'>
+            <a href="mailto: janvisree.p@gmail.com" target="_blank">
+                <img src="assets/mail.png" alt="Icon 1">
+            </a>
+            <a href="https://www.linkedin.com/in/janvisree-puligundla-80a0861b9/" target="_blank">
+                <img src="assets/linkedin.webp" alt="Icon 2">
+            </a>
+            <a href="https://github.com/janvi1112" target="_blank">
+                <img src="assets/github.png" alt="Icon 3">
+            </a>
+        </div>
+    </div>
+
+
+    <div id="contactModal" class="modal" onclick="closeModal(); removeActiveLink();">
+        <div class="modal-content" onclick="event.stopPropagation();">
+            <span class="close" onclick="closeModal(); removeActiveLink();">&times;</span>
+            <h2>Get in touch</h2>
+            <form action="mailto:janvisree.p@gmail.com" method="post" enctype="text/plain">
+                <label for="message">Your Message:</label>
+                <textarea id="message" name="message" rows="4" cols="50" required></textarea>
+                <input type="submit" value="Send">
+            </form>
+            <div id = 'homecontacticons'>
+                <a href="mailto: janvisree.p@gmail.com" target="_blank">
+                    <img src="assets/mail.png" alt="Icon 1">
+                </a>
+                <a href="https://www.linkedin.com/in/janvisree-puligundla-80a0861b9/" target="_blank">
+                    <img src="assets/linkedin.webp" alt="Icon 2">
+                </a>
+                <a href="https://github.com/janvi1112" target="_blank">
+                    <img src="assets/github.png" alt="Icon 3">
+                </a>
+            </div>
+        </div>
+    </div>  
+</div>           
+    <script src="script.js"></script>
+    <script>
+        var tablinks = document.getElementsByClassName("tab-links")
+        var tabcontents = document.getElementsByClassName("tab-contents")
+
+        function opentab(tabname){
+            for (tablink of tablinks){
+                tablink.classList.remove("active-link")
+            }
+            for (tabcontent of tabcontents){
+                tabcontent.classList.remove("active-tab")
+            }
+            event.currentTarget.classList.add("active-link")
+            document.getElementById(tabname).classList.add("active-tab")
+        }
+    </script>
+</body>
+</html>

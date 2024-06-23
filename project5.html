@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coffee Contains more Caffeine than an Energy Drink</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body id="indexbody">
+    <div class="header">
+        <div class="sub-header">
+            <h4 id="name">
+                Janvisree
+            </h4>
+        </div>
+        <div class="container">
+            <nav class="navbar">
+                <div class="nav-toggle" id="navToggle">
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="mywork.html" class="active">Portfolio</a></li>
+                    <li>
+                        <a href="assets/Janvisree_Puligundla.pdf" target="_blank" class="home-btn">
+                            Resume
+                        </a>
+                    </li>
+                    <li><a href="javascript:void(0);" onclick="openModal(); closeDropdown(); setActiveLink(this);" class="contact-btn">Get in touch</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+    <section class="clustering-section">
+        <div class="container">
+            <div id="imageModal" class="modal" onclick="closeImageModal();">
+                <div class="modal-content" onclick="event.stopPropagation();">
+                    <span class="close" onclick="closeImageModal();">&times;</span>
+                    <img id="expandedImage" src="" alt="Expanded Image">
+                </div>
+            </div>
+        <h1 style="text-align: center; margin-bottom: 25px;" class="sub-title">Coffee Contains more Caffeine than an Energy Drink</h1>
+        <img src="assets/project5/project5.jpeg" alt="Methodology" class="clustering-overview-images">
+        <a href="https://www.caffeineinformer.com/the-caffeine-database" target="_blank" class="btn">
+            Dataset Link
+        </a>
+        
+        <a href="https://www.caffeineinformer.com/the-caffeine-database" target="_blank" class="btn">
+            Caffeineinformer database
+        </a>
+        <a href="https://www.commonroomroasters.com/blogs/specialty-coffee/coffee-vs-energy-drinks#:~:text=Bottom%20line%3A%20coffee%20has%20a,eliminate%20the%20stimulation%20from%20caffeine." target="_blank" class="btn">
+            Practical significance claims
+        </a>
+        <h1>1. Introduction:</h1>
+        <p>
+            In a world where drink choices play a significant role in our daily lives, the question of caffeine
+and calorie content has become increasingly relevant. This project embarks on a journey to
+unravel the mysteries surrounding the nutritional composition of popular drinks, with a
+particular focus on the age-old debate: coffee vs. energy drinks. Caffeine, a stimulant found in
+various drinks, has long been associated with diverse health outcomes, while calories serve as
+a crucial metric in assessing the nutritional impact of our favourite drinks.
+The research question at the heart of this investigation is taken from COFFEE VS. ENERGY
+DRINKS: WHICH IS BETTER?, which states that coffee contains more caffeine and fewer calories
+when compared to energy drinks and to other drinks. The significance of this inquiry lies not
+only in satisfying our curiosity but in informing everyday decisions regarding drinks
+consumption and promoting healthier lifestyle choices.
+To understand the nuances of this comparison, we delve into a rich dataset gathered from a
+myriad of popular drinks, aiming to provide insights accessible to individuals from all walks of
+life. This introduction sets the stage by elucidating the widespread implications of our drink
+choices, introducing the historical context of caffeine consumption, and highlighting the
+contemporary importance of informed decision-making in nutritional preferences. As we
+navigate through the subsequent sections, we will unveil our methodology, and present
+findings that challenge conventional wisdom regarding coffee, energy drinks and their
+nutritional impact.
+        </p>
+        <h1>2. Dataset</h1>
+        <p>
+            The dataset utilized in this project was gathered through web scraping from the website
+Caffeine Informer, a comprehensive resource providing information about various drinks and
+their caffeine and calories content. Web scraping was conducted in Python using Beautiful
+Soup to extract all the features.
+        </p>
+        <p>
+            While the dataset aims to provide a broad representation of popular drinks, it is essential to
+acknowledge potential biases. The information is sourced from a specific website, and the
+representation may be influenced by the content available on that platform. Bias may arise
+from the selection of drinks featured on the website, potentially favouring those with higher
+or lower caffeine content. Additionally, the accuracy of the data relies on the reliability of the
+source and the precision of the web scraping process.
+        </p>
+        <h1>3. Data Preprocessing:</h1>
+        <ol>
+        <li>Renamed the features for consistency and clarity. Checked for missing values and did not find any which indicates the completeness of the dataset.</li>
+        <div class="cleaning-image-container">
+            <div class="thumbnail" onclick="expandImage('assets/project5/cmc1.png')">
+                <img src="assets/project5/cmc1.png" alt="hsilcs">
+            </div>
+        </div>
+        <li>Calculated calories per floz for each record and stored it in new feature named calories_per_floz.</li>
+        <div class="cleaning-image-container">
+            <div class="thumbnail" onclick="expandImage('assets/project5/cmc2.png')">
+                <img src="assets/project5/cmc2.png" alt="hsilcs">
+            </div>
+        </div>
+        <li>Dropped the unnecessary columns.</li>
+        <div class="cleaning-image-container">
+            <div class="thumbnail" onclick="expandImage('assets/projct5/cmc3.png')">
+                <img src="assets/project5/cmc3.png" alt="hsilcs">
+            </div>
+        </div>
+        </ol>
+
+        <h2>3.2 Exploratory Data Analysis (EDA):</h2>
+        <p>To gain insights into the dataset and lay the foundation for our analyses, we performed exploratory data analysis (EDA). This involved generating summary statistics, visualizing distributions, and identifying patterns in the key variables—volume, calories, caffeine content, and drink type. EDA aided in understanding the data's structure, uncovering potential outliers, and informing subsequent analytical decisions.</p>
+
+        <h2>3.3 Statistical Analyses:</h2>
+        <h3>3.3.1 Two Sample z-tests:</h3>
+        <p>Conducted upper and lower-tailed two-sample z-tests using manual calculations and the BDSA package in R to compare caffeine content and calorie count between two samples (coffee and energy drinks, coffee and other drinks). These tests are appropriate for comparing means between two samples and are relevant to our research questions.</p>
+        <p>Central Limit theorem (CLT) states that the distribution of sample means resembles the normal distribution if sample size is &gt; 30. Since the size of our samples is greater than 30, the distribution resembles the normal distribution. Hence z test is the ideal test statistic. We also set our significance level (𝜶) to 0.05 (5%). If the p-value from the Two sample z-test ≤ α, then we will reject our null hypothesis else there is no strong evidence to reject the null hypothesis.</p>
+        <p>p-value: It is the probability, calculated given that the null hypothesis is true, of getting the value of the test statistic as extreme as the value from the sample.</p>
+        <p>Significance level (𝜶): It is a value such that the null hypothesis is rejected if p-value ≤ α, and cannot be rejected if p-value &gt; α.</p>
+        <p>Upper tailed test: Extreme values are located in the upper tail of the distribution. p-value = 1 – pnorm(z)</p>
+        <p>Lower tailed test: Extreme values are located in lower tail of the distribution. p-value = pnorm(z)</p>
+        <img src="assets/project5/cmc12.jpeg" alt="hyptest" class="clustering-overview-images">
+
+        <p>Z statistic for two samples - Manual calculation:</p>
+        <div class="cleaning-image-container">
+            <div class="thumbnail" onclick="expandImage('assets/project5/cmc4.png')">
+                <img src="assets/project5/cmc4.png" alt="hsilcs">
+            </div>
+        </div>
+        <h3>3.3.2 Correlation Analysis:</h3>
+        <p>Calculated correlation coefficient to assess the relationship between caffeine content and calorie count. This provided insights into potential associations between these key variables i.e., caffeine and calorie count.</p>
+        <p>These methods were selected based on their suitability for addressing the research questions and providing meaningful insights into the comparative nutritional aspects of coffee, energy drinks, and other drinks. The combination of exploratory data analysis and statistical tests offers a comprehensive approach to understanding the dataset and drawing reliable conclusions.</p>
+        <div class="cleaning-image-container">
+            <div class="thumbnail" onclick="expandImage('assets/project5/cmc9.png')">
+                <img src="assets/project5/cmc9.png" alt="hsilcs">
+            </div>
+        </div>
+        <p>
+            Correlation coefficient = 0.08885294. Since the correlation coefficient is close to 0, there is no statistically significant relationship between caffeine content and calorie count.
+        </p>
+        <h1>4. Results</h1>
+        <h3>Statistical Analyses:</h3>
+        <h4>4.1 Test 1 - Upper tailed Two Sample z-test:</h4>
+        <p><strong>Null Hypothesis (H0):</strong> There is no significant difference in caffeine content between coffee and an Energy Drink.<br>
+        <strong>Alternative Hypothesis (H1):</strong> Coffee contains more caffeine than an Energy Drink.<br>
+        <div class="cleaning-image-container">
+            <div class="thumbnail" onclick="expandImage('assets/project5/cmc5.png')">
+                <img src="assets/project5/cmc5.png" alt="hsilcs">
+            </div>
+        </div>
+        <strong>Result:</strong> There is strong evidence to reject the null hypothesis as p-value &lt; 0.05. So, we can conclude that Coffee contains more caffeine than an Energy Drink.</p>
+
+        <h4>4.2 Test 2 - Lower tailed Two Sample z-test:</h4>
+        <p><strong>Null Hypothesis (H0):</strong> There is no significant difference in calorie count between coffee and an Energy Drink.<br>
+        <strong>Alternative Hypothesis (H1):</strong> Coffee contains fewer calories than an Energy Drink.<br>
+        <div class="cleaning-image-container">
+            <div class="thumbnail" onclick="expandImage('assets/project5/cmc6.png')">
+                <img src="assets/project5/cmc6.png" alt="hsilcs">
+            </div>
+        </div>
+        <strong>Result:</strong> There is no strong evidence to reject the null hypothesis as p-value &gt; 0.05.</p>
+
+        <h4>4.3 Test 3 - Upper tailed Two Sample z-test:</h4>
+        <p><strong>Null Hypothesis (H0):</strong> There is no significant difference in caffeine content between coffee and other drinks.<br>
+        <strong>Alternative Hypothesis (H1):</strong> Coffee contains more caffeine than other drinks.<br>
+        <div class="cleaning-image-container">
+            <div class="thumbnail" onclick="expandImage('assets/project5/cmc7.png')">
+                <img src="assets/project5/cmc7.png" alt="hsilcs">
+            </div>
+        </div>
+        <strong>Result:</strong> There is no strong evidence to reject null hypothesis as p-value &gt; 0.05.</p>
+
+        <h4>4.4 Test 4 - Lower tailed Two Sample z-test:</h4>
+        <p><strong>Null Hypothesis (H0):</strong> There is no significant difference in calorie content between coffee and other drinks.<br>
+        <strong>Alternative Hypothesis (H1):</strong> Coffee contains fewer calories than other drinks.<br>
+        <div class="cleaning-image-container">
+            <div class="thumbnail" onclick="expandImage('assets/project5/cmc8.png')">
+                <img src="assets/project5/cmc8.png" alt="hsilcs">
+            </div>
+        </div>
+        <strong>Result:</strong> There is no strong evidence to reject null hypothesis as p-value &gt; 0.05.</p>
+
+        <h1>Tableau Dashboard:</h1>
+        <div class="cleaning-image-container">
+            <div class="thumbnail" onclick="expandImage('assets/project5/cmc10.png')">
+                <img src="assets/project5/cmc10.png" alt="hsilcs">
+            </div>
+        </div>
+        <div class="cleaning-image-container">
+            <div class="thumbnail" onclick="expandImage('assets/project5/cmc11.png')">
+                <img src="assets/project5/cmc11.png" alt="hsilcs">
+            </div>
+        </div>
+
+        <h1>Conclusion:</h1>
+        <p>
+            This study set out to unravel the age-old debate between coffee and energy drinks, examining
+            their caffeine and calorie content alongside other drinks. The exploration journey uncovered
+            intriguing insights, challenging certain preconceptions. Contrary to the claims from COFFEE
+            VS. ENERGY DRINKS: WHICH IS BETTER? and common belief, our findings reveal that Coffee
+            does indeed contain more caffeine than an Energy Drink but there is no strong evidence for
+            other claims. This result is supported by robust statistical evidence, emphasizing the
+            importance of evidence-based decision-making when it comes to choosing a drink for that
+            much-needed energy boost. On the calorie front, the study found no significant differences
+            between coffee and energy drinks, or between coffee and other drink types. This challenges
+            the notion that coffee is inherently a low-calorie option and underscores the need for a
+            nuanced understanding of nutritional aspects when making drink choices.
+            The weak positive correlation between Caffeine and Calorie content suggests a nuanced
+            relationship that varies among drink types. While caffeine and calories show a slight tendency
+            to increase together, the overall connection is subtle and influenced by the diversity of drinks
+            in the dataset.</p>
+            <h1>Implications:</h1>
+            <p>
+                Individuals seeking caffeinated beverages can make more informed choices based on their
+                preferences for caffeine content without significant differences in calories impact.
+                The study highlights the importance of considering nutritional nuances when evaluating
+                popular drink choices, challenging assumptions and promoting evidence-based decision-
+                making.
+            </p>
+            <h1>Future plans:</h1>
+            <p>
+                In future, we could explore how the caffeine and calorie content of different drinks has
+                changed over time using Time Series Analysis and use clustering algorithms to segment drinks
+                based on their nutritional profiles to identify groups of drinks that share similar characteristics
+                in terms of caffeine, calories, and other nutritional components.
+                In conclusion, this study provides valuable insights into the nutritional landscape of popular
+                drinks, offering a nuanced understanding of caffeine and caloric comparisons. As individuals
+                continue to make choices that impact their daily lives, this research contributes to a more
+                informed and evidence-based approach in selecting drink that align with their preferences
+                and health goals. 
+            </p>
+            
+
+        </div>
+    </section>
+    
+
+    <div>
+        <div class="container" id = 'homecontact'>
+            <h1>Get in touch </h1>
+            <p>Have a project or question? I’d love to hear from you!</p>
+        </div>
+        <div id = 'homecontacticons'>
+            <a href="mailto: janvisree.p@gmail.com" target="_blank">
+                <img src="assets/mail.png" alt="Icon 1">
+            </a>
+            <a href="https://www.linkedin.com/in/janvisree-puligundla-80a0861b9/" target="_blank">
+                <img src="assets/linkedin.webp" alt="Icon 2">
+            </a>
+            <a href="https://github.com/janvi1112" target="_blank">
+                <img src="assets/github.png" alt="Icon 3">
+            </a>
+        </div>
+    </div>
+
+
+    <div id="contactModal" class="modal" onclick="closeModal(); removeActiveLink();">
+        <div class="modal-content" onclick="event.stopPropagation();">
+            <span class="close" onclick="closeModal(); removeActiveLink();">&times;</span>
+            <h2>Get in touch</h2>
+            <form action="mailto:janvisree.p@gmail.com" method="post" enctype="text/plain">
+                <label for="message">Your Message:</label>
+                <textarea id="message" name="message" rows="4" cols="50" required></textarea>
+                <input type="submit" value="Send">
+            </form>
+            <div id = 'homecontacticons'>
+                <a href="mailto: janvisree.p@gmail.com" target="_blank">
+                    <img src="assets/mail.png" alt="Icon 1">
+                </a>
+                <a href="https://www.linkedin.com/in/janvisree-puligundla-80a0861b9/" target="_blank">
+                    <img src="assets/linkedin.webp" alt="Icon 2">
+                </a>
+                <a href="https://github.com/janvi1112" target="_blank">
+                    <img src="assets/github.png" alt="Icon 3">
+                </a>
+            </div>
+        </div>
+    </div>  
+</div>           
+    <script src="script.js"></script>
+    <script>
+        var tablinks = document.getElementsByClassName("tab-links")
+        var tabcontents = document.getElementsByClassName("tab-contents")
+
+        function opentab(tabname){
+            for (tablink of tablinks){
+                tablink.classList.remove("active-link")
+            }
+            for (tabcontent of tabcontents){
+                tabcontent.classList.remove("active-tab")
+            }
+            event.currentTarget.classList.add("active-link")
+            document.getElementById(tabname).classList.add("active-tab")
+        }
+    </script>
+</body>
+</html>
